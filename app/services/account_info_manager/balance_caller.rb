@@ -1,11 +1,11 @@
 module AccountInfoManager
   class BalanceCaller < AllyinvestApplicationService
-    def initialize()
-      super()
-    end
+    include TokenGenerator
 
     def call
-      token = OAuth::AccessToken.new(@consumer, @ACCESS_TOKEN, @ACCESS_TOKEN_SECRET)
+      token = generate_token
+      balance ||= token.get("/v1/accounts/#{Rails.application.credentials.ally_uid[:USER_ID]}/balances.json", {'Accept' => 'application/json'}).body
+      balance_parsed = JSON.parse(balance)
     end
   end
 end

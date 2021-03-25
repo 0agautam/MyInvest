@@ -4,31 +4,23 @@ class StocksController < ApplicationController
   # GET /stocks or /stocks.json
   def index
     @stocks = Stock.all
-    puts "Your USER_ID is : #{Rails.application.credentials.ally_uid[:USER_ID]}"
   end
 
   def balance
     # code for balance
-
-    balanceOAuthtoken = AccountInfoManager::BalanceCaller.call
-    @balances ||= balanceOAuthtoken.get("/v1/accounts/#{Rails.application.credentials.ally_uid[:USER_ID]}/balances.json", {'Accept' => 'application/json'}).body
-    @balances_parsed = JSON.parse(@balances)
+    @balances_parsed = AccountInfoManager::BalanceCaller.call
     puts "Balances are : #{@balances_parsed}"
   end
 
   def history
     #code for history
-    historyOAuthtoken = AccountInfoManager::HistoryCaller.call
-    @history ||= historyOAuthtoken.get("/v1/accounts/#{Rails.application.credentials.ally_uid[:USER_ID]}/history.json", {'Accept' => 'application/json'}).body
-    @history_parsed = JSON.parse(@history)
+    @history_parsed = AccountInfoManager::HistoryCaller.call
     puts "History is : #{@history_parsed}"
   end
 
   def holding
     #code for holding
-    holdingOAuthtoken = AccountInfoManager::HoldingCaller.call
-    @holdings ||= holdingOAuthtoken.get("/v1/accounts/#{Rails.application.credentials.ally_uid[:USER_ID]}/holdings.json", {'Accept' => 'application/json'}).body
-    @holdings_parsed = JSON.parse(@holdings)
+    @holdings_parsed = AccountInfoManager::HoldingCaller.call
     puts "Balances are : #{@holdings_parsed}"
   end
 

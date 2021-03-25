@@ -1,11 +1,11 @@
 module AccountInfoManager
   class HistoryCaller < AllyinvestApplicationService
-    def initialize()
-      super()
-    end
+    include TokenGenerator
 
     def call
-      token = OAuth::AccessToken.new(@consumer, @ACCESS_TOKEN, @ACCESS_TOKEN_SECRET)
+      token = generate_token
+      history ||= token.get("/v1/accounts/#{Rails.application.credentials.ally_uid[:USER_ID]}/history.json", {'Accept' => 'application/json'}).body
+      history_parsed = JSON.parse(history)
     end
   end
 end

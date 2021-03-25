@@ -1,11 +1,11 @@
 module AccountInfoManager
   class HoldingCaller < AllyinvestApplicationService
-    def initialize()
-      super()
-    end
-
+    include TokenGenerator
+    
     def call
-      token = OAuth::AccessToken.new(@consumer, @ACCESS_TOKEN, @ACCESS_TOKEN_SECRET)
+      token = generate_token
+      holdings ||= token.get("/v1/accounts/#{Rails.application.credentials.ally_uid[:USER_ID]}/holdings.json", {'Accept' => 'application/json'}).body
+      holdings_parse = JSON.parse(holdings)
     end
   end
 end
