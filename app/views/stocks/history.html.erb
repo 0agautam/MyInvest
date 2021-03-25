@@ -1,1 +1,65 @@
+<p id="notice"><%= notice %></p>
+
 <h1>Histories</h1>
+<% @new_hash = {} %>
+
+<% @history_parsed["response"]["transactions"]["transaction"].each do |transaction| %>
+
+<table>
+  <thead>
+    <tr>
+      <th>activity</th>
+      <th>amount</th>
+      <th>date</th>
+      <th>desc</th>
+      <th>symbol</th>
+      <th>accounttype</th>
+      <th>commission</th>
+      <th>description</th>
+      <th>fee</th>
+      <th>price</th>
+      <th>quantity</th>
+      <th>secfee</th>
+      <th>security</th>
+      <th>cusip</th>
+      <th>id</th>
+      <th>sectyp</th>
+      <th>sym</th>
+      <th>settlementdate</th>
+      <th>side</th>
+      <th>source</th>
+      <th>tradedate</th>
+      <th>transactionid</th>
+      <th>transactiontype</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= transaction['activity']%></td>
+      <td><%= transaction['amount']%></td>
+      <td><%= transaction['date']%></td>
+      <td><%= transaction['desc']%></td>
+      <td><%= transaction['symbol']%></td>
+      <td><%= transaction['transaction']['accounttype']%></td>
+      <td><%= transaction['transaction']['commission']%></td>
+      <td><%= transaction['transaction']['description']%></td>
+      <td><%= transaction['transaction']['fee']%></td>
+      <td><%= transaction['transaction']['price']%></td>
+      <td><%= transaction['transaction']['quantity']%></td>
+      <td><%= transaction['transaction']['secfee']%></td>
+      <td><%= transaction['transaction']['security']['cusip']%></td>
+      <td><%= transaction['transaction']['security']['id']%></td>
+      <td><%= transaction['transaction']['security']['sectyp']%></td>
+      <td><%= transaction['transaction']['security']['sym']%></td>
+      <td><%= transaction['settlementdate']%></td>
+      <td><%= transaction['side']%></td>
+      <td><%= transaction['source']%></td>
+      <td><%= transaction['tradedate']%></td>
+      <td><%= transaction['transactionid']%></td>
+      <td><%= transaction['transactiontype']%></td>
+    </tr>
+  </tbody>
+</table>
+
+<% end %>

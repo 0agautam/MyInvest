@@ -1,1 +1,72 @@
 <h1>Balances</h1>
+
+<% balance = @balances_parsed['response']['accountbalance']%>
+  <table>
+    <thead>
+      <tr>
+        <th>account</th>
+        <th>accountvalue</th>
+        <th>cashavailableforwithdrawl</th>
+        <th>daytrading</th>
+        <th>equitypercentage</th>
+        <th>options</th>
+        <th>soddaytrading</th>
+        <th>sodoptions</th>
+        <th>sodstocks</th>
+        <th>stock</th>
+        <th>fedcall</th>
+        <th>housecall</th>
+        <th>accruedinterest</th>
+        <th>cash</th>
+        <th>cashavailable</th>
+        <th>marginbalance</th>
+        <th>mmf</th>
+        <th>total</th>
+        <th>uncleareddeposits</th>
+        <th>unsettledfunds</th>
+        <th>yield</th>
+        <th>longoptions</th>
+        <th>longstocks</th>
+        <th>options</th>
+        <th>shortoptions</th>
+        <th>shortstocks</th>
+        <th>stocks</th>
+        <th>total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> <%= balance['account'] %> </td>
+        <td> <%= balance['accountvalue'] %> </td>
+        <td> <%= balance['buyingpower']['cashavailableforwithdrawal']%> </td>
+        <td> <%= balance['buyingpower']['daytrading']%> </td>
+        <td> <%= balance['buyingpower']['equitypercentage']%> </td>
+        <td> <%= balance['buyingpower']['options']%> </td>
+        <td> <%= balance['buyingpower']['soddaytrading']%> </td>
+        <td> <%= balance['buyingpower']['sodoptions']%> </td>
+        <td> <%= balance['buyingpower']['sodstock']%> </td>
+        <td> <%= balance['buyingpower']['stock']%> </td>
+        <td> <%= balance['fedcall'] %> </td>
+        <td> <%= balance['housecall'] %> </td>
+
+        <td> <%= balance['money']['accruedinterest']%> </td>
+        <td> <%= balance['money']['cash']%> </td>
+        <td> <%= balance['money']['cashavailable']%> </td>
+        <td> <%= balance['money']['marginbalance']%> </td>
+        <td> <%= balance['money']['mmf']%> </td>
+        <td> <%= balance['money']['total']%> </td>
+        <td> <%= balance['money']['uncleareddeposits']%> </td>
+        <td> <%= balance['money']['unsettledfunds']%> </td>
+        <td> <%= balance['money']['yield']%> </td>
+
+        <td> <%= balance['securities']['longoptions']%> </td>
+        <td> <%= balance['securities']['longstocks']%> </td>
+        <td> <%= balance['securities']['options']%> </td>
+        <td> <%= balance['securities']['shortoptions']%> </td>
+        <td> <%= balance['securities']['shortstocks']%> </td>
+        <td> <%= balance['securities']['stocks']%> </td>
+        <td> <%= balance['securities']['total']%> </td>
+
+      </tr>
+    </tbody>
+  </table>

@@ -1,1 +1,168 @@
+<p id="notice"><%= notice %></p>
+
+<% @new_hash = {} %>
+
 <h1>Holdings</h1>
+<% @holdings_parsed["response"]["accountholdings"]["holding"].each do |holding| %>
+<% @new_hash["#{holding["instrument"]["sym"]}"] = holding %>
+<table>
+  
+  <thead>
+    <tr>
+      <th>
+        sym
+      </th>
+      <th>
+        accounttype
+      </th>
+      <th>
+        costbasis
+      </th>
+      <th>
+        gainloss
+      </th>
+      <th>
+        cfi
+      </th>
+      <th>
+        cusip
+      </th>
+      <th>
+        desc
+      </th>
+      <th>
+        factor
+      </th>
+      <th>
+        matdt
+      </th>
+      <th>
+        mmy
+      </th>
+      <th>
+        mult
+      </th>
+      <th>
+        putcall
+      </th>
+      <th>
+        sectyp
+      </th>
+      <th>
+        strkpx
+      </th>
+      <th>
+        marketvalue
+      </th>
+      <th>
+        marketvaluechange
+      </th>
+      <th>
+        price
+      </th>
+      <th>
+        purchaseprice
+      </th>
+      <th>
+        qty
+      </th>
+      <th>
+        change
+      </th>
+      <th>
+        dividenddata
+      </th>
+      <th>
+        format
+      </th>
+      <th>
+        lastprice
+      </th>
+      <th>
+        sodcostbasis
+      </th>
+      <th>
+        underlying
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>
+      <%= holding["instrument"]["sym"] %>
+    </td>
+    <td>
+      <%= holding["accounttype"] %>
+    </td>
+    <td>
+      <%= holding["costbasis"] %>
+    </td>
+    <td>
+      <%= holding["gainloss"] %>
+    </td>
+    <td>
+      <%= holding["instrument"]["cfi"] %>
+    </td>
+    <td>
+      <%= holding["instrument"]["cusip"] %>
+    </td>
+    <td>
+      <%= holding["instrument"]["desc"] %>
+    </td>
+    <td>
+      <%= holding["instrument"]["factor"] %>
+    </td>
+    <td>
+      <%= holding["instrument"]["matdt"] %>
+    </td>
+    <td>
+      <%= holding["instrument"]["mmy"] %>
+    </td>
+    <td>
+      <%= holding["instrument"]["mult"] %>
+    </td>
+    <td>
+      <%= holding["instrument"]["putcall"] %>
+    </td>
+    <td>
+      <%= holding["instrument"]["sectyp"] %>
+    </td>
+    <td>
+      <%= holding["instrument"]["strkpx"] %>
+    </td>
+
+    <td>
+      <%= holding["marketvalue"] %>
+    </td>
+    <td>
+      <%= holding["marketvaluechange"] %>
+    </td>
+    <td>
+      <%= holding["price"] %>
+    </td>
+    <td>
+      <%= holding["purchaseprice"] %>
+    </td>
+    <td>
+      <%= holding["qty"] %>
+    </td>
+    <td>
+      <%= holding["quote"]["change"] %>
+    </td>
+    <td>
+      <%= holding["quote"]["extendedquote"]["dividenddata"] %>
+    </td>
+    <td>
+      <%= holding["quote"]["format"] %>
+    </td>
+    <td>
+      <%= holding["quote"]["lastprice"] %>
+    </td>
+    <td>
+      <%= holding["sodcostbasis"] %>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<% end %>
